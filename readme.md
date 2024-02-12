@@ -85,6 +85,13 @@ To get the project up and running on your local machine, follow these steps:
    node app.js
    ```
 
+   ## Glitch
+
+   ```bash
+    https://dusty-ultra-brand.glitch.me
+   ```
+ 
+
 ## Admin
 
 - Login:Alibek
