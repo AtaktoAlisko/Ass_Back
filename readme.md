@@ -85,7 +85,7 @@ To get the project up and running on your local machine, follow these steps:
    node app.js
    ```
 
-   ## Glitch
+   ## Deploy the project on a hosting service
 
    ```bash
     https://node-mongodb-api-yif3.onrender.com/
