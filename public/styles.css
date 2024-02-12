@@ -1,0 +1,180 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+h3 {
+  margin-top: 20px;
+  text-align: center; /* Center align the heading */
+}
+.input-container {
+  display: flex;
+  flex-direction: column;
+
+  input {
+    margin-left: 600px;
+    width: 400px;
+    margin-bottom: 20px;
+  }
+  button {
+    margin-left: 700px;
+    width: 200px;
+  }
+}
+
+.button-container,
+.weather-container,
+.wallet-container {
+  text-align: center; /* Center align the input field, button, and data */
+  margin: 0 auto; /* Center the container horizontally */
+  width: 1000px; /* Set a fixed width for the container */
+  border: 1px solid #ddd; /* Add a border */
+  padding: 10px; /* Add padding */
+  border-radius: 5px; /* Add border radius for rounded corners */
+}
+.input-container,
+.wallet-container {
+  margin-bottom: 20px; /* Add bottom margin to create space */
+}
+input[type="text"],
+button {
+  padding: 8px;
+  font-size: 16px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+table th {
+  background-color: #f2f2f2;
+}
+#map {
+  height: 300px;
+  margin-top: 20px;
+}
+hr {
+  margin-top: 20px;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0; /* Add padding to give some space around the text */
+
+  color: #fff; /* Change the text color */
+}
+
+footer h3 {
+  margin: 0; /* Remove default margin */
+  font-size: 18px; /* Adjust the font size */
+}
+
+.advice {
+  .advice-box {
+    box-sizing: border-box;
+    width: 90%;
+    max-width: 470px;
+    min-height: 40%;
+    padding: 20px 20px 30px;
+    border-radius: 8px;
+    background-color: var(--grayish-blue);
+    text-align: center;
+
+    justify-content: space-between;
+  }
+
+  .advice-box__number {
+    margin: 10px 0;
+    color: var(--neon-green);
+    font-size: 0.5em;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+  }
+
+  .advice-box__text {
+    color: var(--ligth-cyan);
+    font-weight: 800;
+    font-size: 1.5em;
+  }
+
+  .divider {
+    background-image: url("../images/pattern-divider-mobile.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+
+    width: 100%;
+    height: 40px;
+    margin: 15px 0;
+    fill: var(--ligth-cyan);
+
+    align-self: flex-end;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .divider {
+      background-image: url("../images/pattern-divider-desktop.svg");
+    }
+  }
+
+  .advice-box__button {
+    position: relative;
+    bottom: 2.5em;
+
+    background-color: var(--neon-green);
+    width: 70px;
+    height: 70px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+
+    transition-duration: 0.3s;
+  }
+
+  .advice-box__button:active {
+    box-shadow: 0px 0px 40px 5px var(--neon-green);
+  }
+
+  .advice-box__button img {
+    width: 2.2em;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .spin-animation {
+    animation-name: spin;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .attribution {
+    position: absolute;
+    bottom: 1em;
+
+    color: var(--ligth-cyan);
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .attribution a {
+    color: var(--neon-green);
+  }
+}
