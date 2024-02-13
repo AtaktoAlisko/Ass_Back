@@ -87,7 +87,7 @@ To get the project up and running on your local machine, follow these steps:
  ** Deploy server:**
 
    ```bash
-  [ node app.js](https://node-mongodb-api-yif3.onrender.com)
+  https://node-mongodb-api-yif3.onrender.com
    ```
 
 ## Admin
