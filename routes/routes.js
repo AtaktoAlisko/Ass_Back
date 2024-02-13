@@ -241,34 +241,27 @@ router.get("/BTC/price", function (req, res) {
 });
 router.post("/signup", async (req, res) => {
   try {
-    const { username, email, password } = req.body;
-
-    // Проверяем, что все данные присутствуют
+    const { username, email, password, isAdmin } = req.body; // Include isAdmin
     if (!username || !email || !password) {
       return res
         .status(400)
         .send({ success: false, message: "Missing required fields" });
     }
-
-    // Подключаемся к базе данных
     await connectToDatabase();
-
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Выполняем операцию добавления пользователя в коллекцию users
     await client.db("users").collection("users").insertOne({
       username,
       email,
       password: hashedPassword,
-      isAdmin: false,
+      isAdmin: isAdmin === "true", // Convert string "true" to boolean true
     });
-
     res.status(200).send({ success: true, redirectUrl: "/" });
   } catch (error) {
     console.error("Error registering user:", error);
     res.status(500).send({ success: false, message: "Error registering user" });
   }
 });
+
 
 router.get("/logout", function (req, res) {
   delete req.session.user;
@@ -337,14 +330,6 @@ router.get("/auth/status", async (req, res) => {
 
 router.use(function (req, res, next) {
   res.status(404).send("Sorry, can't find that!");
-});
-
-router.get("/login", function (req, res) {
-  if (req.session.user) {
-    res.redirect("/"); // Перенаправляем аутентифицированного пользователя на главную страницу
-  } else {
-    res.render(path.join(__dirname, "..", "public", "login"));
-  }
 });
 
 module.exports = router;
