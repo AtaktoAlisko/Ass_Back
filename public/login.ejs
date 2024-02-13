@@ -100,9 +100,9 @@
       document
         .getElementById("login-form")
         .addEventListener("submit", function (event) {
-          event.preventDefault(); 
+          event.preventDefault();
 
-          const formData = new FormData(this); 
+          const formData = new FormData(this);
           const userData = {
             username: document.getElementById("username").value,
             password: document.getElementById("password").value,
@@ -129,14 +129,26 @@
         });
 
       window.onload = function () {
-        const isAuthenticated = localStorage.getItem("isAuthenticated");
-        if (isAuthenticated) {
-          document.querySelector('a[href="/login"]').style.display = "none";
-          document.querySelector('a[href="/signup"]').style.display = "none";
-        } else {
-          document.querySelector('a[href="/login"]').style.display = "block";
-          document.querySelector('a[href="/signup"]').style.display = "block";
-        }
+        // Проверяем, аутентифицирован ли пользователь на сервере
+        fetch("/auth/status")
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.isAuthenticated) {
+              // Если пользователь аутентифицирован, скрываем ссылки на вход и регистрацию
+              document.querySelector('a[href="/login"]').style.display = "none";
+              document.querySelector('a[href="/signup"]').style.display =
+                "none";
+            } else {
+              // Если пользователь не аутентифицирован, показываем ссылки на вход и регистрацию
+              document.querySelector('a[href="/login"]').style.display =
+                "block";
+              document.querySelector('a[href="/signup"]').style.display =
+                "block";
+            }
+          })
+          .catch((error) =>
+            console.error("Error checking authentication status:", error)
+          );
       };
     </script>
   </body>

@@ -33,21 +33,18 @@ The application includes several API endpoints:
 
    - Shows detailed weather information.
 
-
- **New API:**
+**New API:**
 
 1. **Bitcoin Wallet Info API:**
 
    - Info About Bitcoin.
 
 2. **Bitcoin Price API:**
+
    - Current info about bin and $.
 
 3. **Advice API:**
    - To get advices.
-
-
-
 
 ## Installation and Setup
 
@@ -85,8 +82,16 @@ To get the project up and running on your local machine, follow these steps:
    node app.js
    ```
 
+   ## Glitch
+
+   ```bash
+    https://node-mongodb-api-yif3.onrender.com/
+
+   ```
+
 ## Admin
 
 - Login:Alibek
 - Password:alibek
+
 # Ass_Back
