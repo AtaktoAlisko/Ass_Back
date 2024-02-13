@@ -12,10 +12,12 @@ const session = require("express-session");
 let history = [];
 router.use(
   session({
-    secret: "your secret key",
+    secret: "your_secret_key", // Замените на ваш секретный ключ
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }, // Note: use `secure: true` for https connections
+    cookie: {
+      secure: false, // Установите в true для HTTPS-соединений
+    },
   })
 );
 
@@ -56,17 +58,6 @@ const translations = {
     kk: "Жел асы",
   },
 };
-
-router.use(
-  session({
-    secret: "my_secret_key", // Секретный ключ для подписи сессионных куки
-    resave: true,
-    saveUninitialized: true,
-    cookie: {
-      secure: false, // Временно установите в false для отладки на локальном сервере
-    },
-  })
-);
 
 router.get("/admin", async (req, res) => {
   try {
@@ -242,11 +233,9 @@ router.get("/BTC/price", function (req, res) {
           .status(500)
           .send({ message: "No response received from the BTC price service" });
       } else {
-        res
-          .status(500)
-          .send({
-            message: "Error in making request to the BTC price service",
-          });
+        res.status(500).send({
+          message: "Error in making request to the BTC price service",
+        });
       }
     });
 });
@@ -343,6 +332,18 @@ router.get("/auth/status", async (req, res) => {
   } catch (error) {
     console.error("Error checking authentication status:", error);
     res.status(500).send({ isAuthenticated: false });
+  }
+});
+
+router.use(function (req, res, next) {
+  res.status(404).send("Sorry, can't find that!");
+});
+
+router.get("/login", function (req, res) {
+  if (req.session.user) {
+    res.redirect("/"); // Перенаправляем аутентифицированного пользователя на главную страницу
+  } else {
+    res.render(path.join(__dirname, "..", "public", "login"));
   }
 });
 
